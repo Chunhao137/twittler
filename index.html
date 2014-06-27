@@ -34,7 +34,7 @@
 
       $(document).ready(function(){
 
-        // function to display all of the tweets
+        // function to display all of the twitts
      
         var mainFeedTwits = function() {
       
@@ -52,7 +52,7 @@
 
          }
 
-       //function to display individual user tweets
+       //function to display individual user twitts
 
        var IndividualTwit = function(user){
 
@@ -66,10 +66,10 @@
         };
 
 
-       //call the mainFeedTweets() function
+       //call the mainFeedTwits() function
        mainFeedTwits()
 
-      //when button is clicked. The tweets will update
+      //when button is clicked. The twits will update
 
        $('#button').on('click',function(){
 
@@ -77,7 +77,7 @@
 
        })
 
-        //when specific name is clicked, the page will only display that individuals tweets. 
+        //when specific name is clicked, the page will only display that individuals twits. 
 
        $('.twitText').on('click','.userName',function(){
 
@@ -85,7 +85,6 @@
          IndividualTwit(user)
 
         })
-
 
      })
 
