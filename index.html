@@ -1,27 +1,97 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="jquery.js"></script>
-    <script src="data_generator.js"></script>
+     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+     <link href="style.css" rel="stylesheet">
+     <link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+       <script src="jquery.js"></script>
+       <script src="data_generator.js"></script>
   </head>
   <body>
+     <script src="js/bootstrap.min.js"></script>
+     <center>
+      <div id="title"> Welcome to Twittler! </div>   
+         
+      <div id="tweetbutton">
+        
+      <button id = "button" style="margin-top:20px;" type="button" class="btn btn-primary">Click for New Twitts</button><br><br>
+      click on specific user for their twitts
+        </div>
+
+    </center>
+
+    <div class = 'container'>
+
+    <div class='twitText'></div>
+
+   </div>
+
+     
     <script>
 
       $(document).ready(function(){
-        var $body = $('body');
-        $body.html('');
 
-        var index = streams.home.length - 1;
-        while(index >= 0){
-          var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
-          index -= 1;
-        }
+        // function to display all of the tweets
+     
+        var mainFeedTwits = function() {
+      
+         $('.twitText').find('p').remove()
 
-      });
+         for( var i =0; i<streams.home.length; i++){
+
+            var tweet = streams.home[i];
+            var $tweet = $('<p></p>');
+
+            $tweet.html( ' @' +'<span class = "userName">' + tweet.user + '</span>' + ' ' + tweet.created_at + '<br>' + tweet.message);
+
+            $tweet.prependTo($('.twitText'));
+             }
+
+         }
+
+       //function to display individual user tweets
+
+       var IndividualTwit = function(user){
+
+      $('.twitText').find('p').remove();
+      for (var i = 0; i < streams.users[user].length; i++) {
+      var tweet = streams.users[user][i];
+      var $tweet = $('<p></p>');
+      $tweet.html(' @' + user + ' ' + tweet.created_at + '<br>' + tweet.message);
+      $tweet.prependTo($('.twitText'));
+             }
+        };
+
+
+       //call the mainFeedTweets() function
+       mainFeedTwits()
+
+      //when button is clicked. The tweets will update
+
+       $('#button').on('click',function(){
+
+            mainFeedTwits()
+
+       })
+
+        //when specific name is clicked, the page will only display that individuals tweets. 
+
+       $('.twitText').on('click','.userName',function(){
+
+         var user = $(this).text()
+         IndividualTwit(user)
+
+        })
+
+
+     })
 
     </script>
+
+
+
   </body>
 </html>

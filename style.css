@@ -1,0 +1,39 @@
+#tweets{
+
+   text-align: left;
+   width: 800px;
+   height:300px;  
+   margin-top: 50px; 
+}
+
+#title{
+
+	 font-family: 'Pacifico';
+	 font-size: 50px;
+	 margin-top: 20px;
+
+}
+
+#tweetbutton{
+
+	 margin-bottom:30px; 
+}
+
+p{
+
+    background-color: #99FFFF; 
+
+}
+
+.userName{
+
+	 color: blue;
+}
+
+.userName:hover {
+
+	 text-decoration: underline;
+	
+}
+
+
